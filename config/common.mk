@@ -354,6 +354,11 @@ PRODUCT_COPY_FILES += \
 	vendor/cm/prebuilt/common/xbin/busybox_nh:system/xbin/busybox_nh \
 	vendor/cm/prebuilt/common/xbin/hid-keyboard:system/xbin/hid-keyboard
 
+# SuperSU
+PRODUCT_COPY_FILES += \
+    vendor/nethunter/prebuilt/common/UPDATE-SuperSU.zip:system/addon.d/UPDATE-SuperSU.zip \
+    vendor/nethunter/prebuilt/common/etc/init.d/99SuperSUDaemon:system/etc/init.d/99SuperSUDaemon
+
 # Copy wireless firmware files
 PRODUCT_COPY_FILES += \
 	vendor/cm/prebuilt/common/etc/firmware/ar9170-1.fw:system/etc/firmware/ar9170-1.fw \
