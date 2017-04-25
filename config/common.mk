@@ -390,6 +390,7 @@ PRODUCT_PACKAGES += \
 	Terminal \
  	androidVNC \
 	F-Droid \
+	FDroidPrivilegedExtension \
 	Drivedroid
 
 PRODUCT_PROPERTY_OVERRIDES += \
