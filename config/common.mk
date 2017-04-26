@@ -392,6 +392,28 @@ PRODUCT_PACKAGES += \
 	FDroidPrivilegedExtension \
 	Drivedroid
 
+# init
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/init.maru.rc:root/init.maru.rc
+
+# input
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/excluded-input-devices.xml:system/etc/excluded-input-devices.xml
+
+# container
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/prebuilts/desktop-rootfs.tar.gz:system/maru/containers/kali/kali-rootfs.tar.gz \
+    $(LOCAL_PATH)/container/kali/config:system/maru/containers/kali/config \
+    $(LOCAL_PATH)/container/kali/fstab:system/maru/containers/kali/fstab \
+    $(LOCAL_PATH)/container/mcprepare.sh:system/bin/mcprepare
+
+# LXC Packages
+PRODUCT_PACKAGES += \
+	liblxc \
+	lxc-start \
+	lxc-stop \
+	lxc-rootfs-mnt-README
+
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.cm.display.version=$(CM_DISPLAY_VERSION)
 
