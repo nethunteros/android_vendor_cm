@@ -1,0 +1,5 @@
+# lxc specific file types
+
+type lxc_file, file_type;
+
+type busybox_exec, exec_type, file_type;

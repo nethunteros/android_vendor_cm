@@ -92,6 +92,9 @@ ifneq ($(TARGET_DISABLE_CMSDK), true)
 include vendor/cm/config/cmsdk_common.mk
 endif
 
+# Include LXC specific files
+include vendor/cm/config/lxc.mk
+
 # Bootanimation
 PRODUCT_PACKAGES += \
     bootanimation.zip

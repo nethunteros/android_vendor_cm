@@ -1,0 +1,21 @@
+on init
+    # init.rc already mounts tmpfs for memory cgroup
+    mkdir /sys/fs/cgroup/devices 0750 root system
+    mount cgroup none /sys/fs/cgroup/devices devices
+
+    mkdir /sys/fs/cgroup/freezer 0750 root system
+    mount cgroup none /sys/fs/cgroup/freezer freezer
+
+on post-fs-data
+	mkdir /data/lxc 0770 system system
+	start lxc
+
+service lxc /data/lxc/containers/system/rootfs/sbin/init
+    user root
+    group root
+    oneshot
+    disabled
+
+service mcprepare /system/bin/mlogwrapper /system/bin/mcprepare
+    class late_start
+    oneshot

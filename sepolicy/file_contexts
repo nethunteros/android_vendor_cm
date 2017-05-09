@@ -50,3 +50,12 @@
 
 # bash
 /system/xbin/bash                               u:object_r:shell_exec:s0
+
+
+# LXC (MaruOS)
+/system/bin/mlogwrapper            u:object_r:mlogwrapper_exec:s0
+/system/bin/mcprepare              u:object_r:mcprepare_exec:s0
+/system/bin/busybox                u:object_r:busybox_exec:s0
+
+/data/lxc(/.*)?                    u:object_r:lxc_file:s0
+/cache/lxc(/.*)?                   u:object_r:lxc_file:s0
