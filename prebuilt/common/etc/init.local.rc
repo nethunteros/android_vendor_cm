@@ -17,6 +17,13 @@ on init
     chmod 0664 /dev/bfqio/rt-display/tasks
     chmod 0220 /dev/bfqio/rt-display/cgroup.event_control
 
+    # init.rc already mounts tmpfs for memory cgroup
+    mkdir /sys/fs/cgroup/devices 0750 root system
+    mount cgroup none /sys/fs/cgroup/devices devices
+
+    mkdir /sys/fs/cgroup/freezer 0750 root system
+    mount cgroup none /sys/fs/cgroup/freezer freezer
+
 on post-fs-data
     mkdir /data/ssh 0750 root shell
     mkdir /data/ssh/empty 0600 root shell
@@ -28,6 +35,9 @@ on post-fs-data
     # Change permissions on fsck log so it can be added to the dropbox
     chown root log /dev/fscklogs/log
     chmod 0640 /dev/fscklogs/log
+
+    # LXC mkdir
+    mkdir /data/lxc 0770 system system
 
 on boot
     # interactive governor
@@ -160,6 +170,11 @@ service bugreport /system/bin/dumpstate -d -p -B -z \
     oneshot
     disabled
     keycodes 114 115 116
+
+# LXC untar/setup
+service lxc /system/bin/mlogwrapper /system/bin/mcprepare
+    class late_start
+    oneshot
 
 # adb over network
 on property:adb.network.port=*

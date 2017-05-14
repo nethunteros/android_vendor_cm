@@ -7,10 +7,6 @@ PRODUCT_PACKAGES += \
 	lxc-console \
 	lxc-rootfs-mnt-README
 
-# LXC Init
-PRODUCT_COPY_FILES += \
-    vendor/cm/prebuilt/common/etc/init.lxc.rc:root/init.lxc.rc
-
 # input
 PRODUCT_COPY_FILES += \
     vendor/cm/prebuilt/common/etc/excluded-input-devices.xml:system/etc/excluded-input-devices.xml
