@@ -10,12 +10,6 @@ on post-fs-data
 	mkdir /data/lxc 0770 system system
 	start lxc
 
-service lxc /data/lxc/containers/system/rootfs/sbin/init
-    user root
-    group root
-    oneshot
-    disabled
-
 service mcprepare /system/bin/mlogwrapper /system/bin/mcprepare
     class late_start
     oneshot
