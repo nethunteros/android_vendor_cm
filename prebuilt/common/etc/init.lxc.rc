@@ -1,10 +1,22 @@
 on init
-    # init.rc already mounts tmpfs for memory cgroup
+
+	#
+	# AOSP no longer mounts cgroup by default in /sys/fs/
+	# cgroup now mounted in /dev
+	# 
+	mount tmpfs none /sys/fs/cgroup mode=0750,uid=0,gid=1000
+
+    # create devices in cgroup
     mkdir /sys/fs/cgroup/devices 0750 root system
     mount cgroup none /sys/fs/cgroup/devices devices
 
+    # freezer
     mkdir /sys/fs/cgroup/freezer 0750 root system
     mount cgroup none /sys/fs/cgroup/freezer freezer
+
+    # systemd
+    mkdir /sys/fs/cgroup/systemd 0750 root system
+    mount cgroup none /sys/fs/cgroup/systemd systemd
 
 on post-fs-data
 	mkdir /data/lxc 0770 system system
