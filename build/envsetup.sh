@@ -68,7 +68,7 @@ function breakfast()
                 echo "** Warning: '$target' is using CM-based makefiles. This will be deprecated in the next major release."
                 lunch cm_$target-$variant
             else
-                lunch lineage_$target-$variant
+                lunch nethunter_$target-$variant
             fi
         fi
     fi
@@ -81,7 +81,7 @@ function eat()
 {
     if [ "$OUT" ] ; then
         MODVERSION=$(get_build_var LINEAGE_VERSION)
-        ZIPFILE=lineage-$MODVERSION.zip
+        ZIPFILE=nethunteros-$MODVERSION.zip
         ZIPPATH=$OUT/$ZIPFILE
         if [ ! -f $ZIPPATH ] ; then
             echo "Nothing to eat"
